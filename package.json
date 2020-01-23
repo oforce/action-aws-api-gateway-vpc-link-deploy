@@ -6,7 +6,7 @@
   "scripts": {
     "preversion": "npm run-script build && git add dist && git commit -m 'build distributable'",
     "postversion": "git push --tags && git push",
-    "build": "ncc build index.js -m -o dist"
+    "build": "ncc build index.js -o dist"
   },
   "dependencies": {
     "@actions/core": "^1.2.1",
