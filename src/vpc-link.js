@@ -1,5 +1,5 @@
-import core from '@actions/core';
-import aws from 'aws-sdk';
+import * as core from '@actions/core';
+import * as aws from 'aws-sdk';
 
 export { getVpcLink };
 

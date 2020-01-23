@@ -1,5 +1,5 @@
-import exec from '@actions/exec';
-import fs from 'fs';
+import * as exec from '@actions/exec';
+import * as fs from 'fs';
 
 export { generateSwaggerFile };
 

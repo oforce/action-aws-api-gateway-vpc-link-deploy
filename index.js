@@ -1,6 +1,6 @@
-import core from '@actions/core';
-import exec from '@actions/exec';
-import aws from 'aws-sdk';
+import * as core from '@actions/core';
+import * as exec from '@actions/exec';
+import * as aws from 'aws-sdk';
 
 import { getLoadBalancerDetails } from './src/load-balancer';
 import { getVpcLink } from './src/vpc-link';
