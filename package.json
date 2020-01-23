@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "preversion": "npm build && git add dist && git commit -m 'build distributable'",
+    "preversion": "npm run-script build && git add dist && git commit -m 'build distributable'",
     "postversion": "git push --tags && git push",
     "build": "ncc build index.js -o dist"
   },
