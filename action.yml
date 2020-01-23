@@ -1,0 +1,39 @@
+name: AWS API Gateway Deploy
+author: Chris Martin <chris.martin@oforce.com>
+description: Deploys a REST API to API Gateway
+
+branding:
+  icon: cloud
+  color: orange
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+
+inputs:
+  load-balancer-name:
+    description: The name of the load balancer.
+    required: true
+  load-balancer-port:
+    description: The port on the load balancer that the application is running.
+    required: true
+
+  swagger-file:
+    description: The swagger file
+    required: true
+
+  rest-api-id:
+    description: The REST API Id
+    required: true
+
+  authorizer-name:
+    description: The name of the Authorizer
+    required: true
+
+  stage-name:
+    description: The stage to deploy to
+    required: true
+
+outputs:
+  swagger-file:
+    description: The API Gateway enhanced swagger definition file
