@@ -21,10 +21,12 @@ async function run() {
 
   const loadBalancerName = core.getInput('load-balancer-name', required);
   const loadBalancerPort = core.getInput('load-balancer-port', required);
-  const swaggerFile = core.getInput('swagger-file', required);
   const restApiId = core.getInput('rest-api-id', required);
   const stageName = core.getInput('stage-name', required);
   const authorizerName = core.getInput('authorizer-name', required);
+
+  const jqScript = core.getInput('jq-script');
+  const swaggerFile = core.getInput('swagger-file');
 
   const {
     arn: loadBalancerArn,
@@ -43,6 +45,7 @@ async function run() {
   ).catch(e => core.setFailed(e.message));
 
   const { destinationSwaggerFile } = await generateSwaggerFile({
+    jqScript,
     swaggerFile,
     loadBalancerDnsName,
     loadBalancerPort,

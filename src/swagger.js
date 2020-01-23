@@ -4,6 +4,7 @@ const fs = require('fs');
 module.exports = { generateSwaggerFile };
 
 async function generateSwaggerFile({
+  jqScript,
   swaggerFile,
   loadBalancerDnsName,
   loadBalancerPort,
@@ -11,17 +12,13 @@ async function generateSwaggerFile({
   authorizerArn,
   vpcLinkId
 }) {
-  await exec.exec(
-    'curl -o api-gateway.jq https://raw.githubusercontent.com/oforce/github/master/actions/aws-api-gateway-deploy/src/api-gateway.jq',
-    [],
-    { silent: true }
-  );
-
-  let out = '';
+  await exec.exec(`curl -o api-gateway.jq ${jqScript}`);
 
   function arg(name, value) {
     return `--arg ${name} "${value}"`;
   }
+
+  let out = '';
 
   await exec.exec(
     `jq ${arg('url', `${loadBalancerDnsName}:${loadBalancerPort}`)} ${arg(
