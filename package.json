@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "preversion": "ncc build index.js -o dist",
-    "postversion": "git add dist && git commit -m 'build distributable' && git push --tags"
+    "preversion": "ncc build index.js -o dist && git add dist && git commit -m 'build distributable'",
+    "postversion": "git push --tags"
   },
   "dependencies": {
     "@actions/core": "^1.2.1",
