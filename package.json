@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "preversion": "ncc build index.js -o dist && git add dist && git commit -m 'build distributable'",
-    "postversion": "git push --tags"
+    "postversion": "git push --tags && git push"
   },
   "dependencies": {
     "@actions/core": "^1.2.1",

@@ -63,6 +63,7 @@ async function run() {
   await client
     .createDeployment({ restApiId, stageName })
     .promise()
+    .then(response => core.info(response))
     .catch(e => core.setFailed(e.message));
 }
 
