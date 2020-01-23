@@ -1,7 +1,7 @@
-const core = require('@actions/core');
-const aws = require('aws-sdk');
+import core from '@actions/core';
+import aws from 'aws-sdk';
 
-module.exports = { getAuthorizer };
+export { getAuthorizer };
 
 function getAuthorizer(restApiId, authorizerName) {
   return new aws.APIGateway()

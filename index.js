@@ -1,11 +1,11 @@
-const core = require('@actions/core');
-const exec = require('@actions/exec');
-const aws = require('aws-sdk');
+import core from '@actions/core';
+import exec from '@actions/exec';
+import aws from 'aws-sdk';
 
-const { getLoadBalancerDetails } = require('./src/load-balancer');
-const { getVpcLink } = require('./src/vpc-link');
-const { getAuthorizer } = require('./src/authorizer');
-const { generateSwaggerFile } = require('./src/swagger');
+import { getLoadBalancerDetails } from './src/load-balancer';
+import { getVpcLink } from './src/vpc-link';
+import { getAuthorizer } from './src/authorizer';
+import { generateSwaggerFile } from './src/swagger';
 
 async function run() {
   const required = {
@@ -66,17 +66,10 @@ async function run() {
   await client
     .createDeployment({ restApiId, stageName })
     .promise()
-    .then(response => core.info(response))
+    .then(response => core.info(JSON.stringify(response, null, 2)))
     .catch(e => core.setFailed(e.message));
 }
 
-module.exports = run;
+export default run;
 
-/* istanbul ignore next */
-if (require.main === module) {
-  try {
-    run();
-  } catch (e) {
-    core.setFailed(e.message);
-  }
-}
+run();

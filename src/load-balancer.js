@@ -1,7 +1,7 @@
-const core = require('@actions/core');
-const aws = require('aws-sdk');
+import core from '@actions/core';
+import aws from 'aws-sdk';
 
-module.exports = { getLoadBalancerDetails };
+export { getLoadBalancerDetails };
 
 function getLoadBalancerDetails(name) {
   return new aws.ELBv2()

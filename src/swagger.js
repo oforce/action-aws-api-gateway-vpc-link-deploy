@@ -1,7 +1,7 @@
-const exec = require('@actions/exec');
-const fs = require('fs');
+import exec from '@actions/exec';
+import fs from 'fs';
 
-module.exports = { generateSwaggerFile };
+export { generateSwaggerFile };
 
 async function generateSwaggerFile({
   jqScript,
