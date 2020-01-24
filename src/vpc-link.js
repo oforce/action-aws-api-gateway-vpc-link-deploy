@@ -14,7 +14,7 @@ function getVpcLink(arn) {
 const setOutputs = arn => ({ items }) => {
   const link = items.find(x => x.targetArns.includes(arn));
   if (!link) {
-    core.setFailed(`Unable to find VPC link with load balancer '${arn}'`);
+    core.setFailed(`Unable to find VPC link for load balancer '${arn}'`);
   }
   return link;
 };
