@@ -26,7 +26,7 @@ inputs:
   jq-script:
     description: The JQ script to alter the swagger file
     required: false
-    default: https://raw.githubusercontent.com/oforce/action-aws-api-gateway-deploy/master/src/api-gateway.jq
+    default: https://raw.githubusercontent.com/oforce/action-aws-api-gateway-vpc-link-deploy/master/src/api-gateway.jq
 
   rest-api-id:
     description: The REST API Id
