@@ -24,6 +24,7 @@ async function run() {
   const restApiId = core.getInput('rest-api-id', required);
   const stageName = core.getInput('stage-name', required);
   const authorizerName = core.getInput('authorizer-name', required);
+
   const jqScript = core.getInput('jq-script');
   const swaggerFile = core.getInput('swagger-file');
 
