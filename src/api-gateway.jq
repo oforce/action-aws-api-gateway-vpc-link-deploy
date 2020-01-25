@@ -1,5 +1,21 @@
-.info.title |= "API" 
+.info.title |= "Openforce API" 
 | .info.description |= "Openforce REST API" 
+| .components += { 
+    securitySchemes: {
+      ($authorizer_name): {
+        type: "apiKey",
+        name: "Authorization",
+        in: "header",
+        "x-amazon-apigateway-authtype": "cognito_user_pools",
+        "x-amazon-apigateway-authorizer": {
+          "providerARNs": [
+            $authorizer
+          ],
+          type: "cognito_user_pools"
+        }
+      }
+    }
+  }
 | .paths |= with_entries(
     .key as $path |
     .value |= with_entries(
@@ -35,27 +51,31 @@
         } else empty end
     )
     | .value += { "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "200 response",
-            "schema": {
-              "$ref": "#/definitions/Empty"
-            },
             "headers": {
               "Access-Control-Allow-Origin": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Methods": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
               },
               "Access-Control-Allow-Headers": {
-                "type": "string"
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
               }
             }
           }
@@ -79,20 +99,6 @@
         }
       }}
   )
- | .securityDefinitions |= {
-      ($authorizer_name): {
-        "type": "apiKey",
-        "name": "Authorization",
-        "in": "header",
-        "x-amazon-apigateway-authtype": "cognito_user_pools",
-        "x-amazon-apigateway-authorizer": {
-          "providerARNs": [
-            $authorizer
-          ],
-          "type": "cognito_user_pools"
-        }
-      }
-  }
 | . +=  {"x-amazon-apigateway-request-validators": {
     "Validate query string parameters and headers": {
       "validateRequestParameters": true,
