@@ -24,7 +24,7 @@ async function generateSwaggerFile({
     `jq ${arg('url', `${loadBalancerDnsName}:${loadBalancerPort}`)} ${arg(
       'authorizer_name',
       authorizerName
-    )} ${arg('authorizer', authorizerArn)} ${arg(
+    )} ${arg('authorizer0', authorizerArn[0] )}  ${arg('authorizer1', authorizerArn[1] )} ${arg(
       'vpc_link_id',
       vpcLinkId
     )} -f api-gateway.jq ${swaggerFile}`,

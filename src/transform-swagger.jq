@@ -87,7 +87,7 @@
         "x-amazon-apigateway-authtype": "cognito_user_pools",
         "x-amazon-apigateway-authorizer": {
           "providerARNs": [
-            $authorizer
+            $authorizer0 , $authorizer1
           ],
           "type": "cognito_user_pools"
         }
