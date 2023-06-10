@@ -19,6 +19,6 @@ const readResponse = authorizerName => ({ items }) => {
   return {
     id: authorizer.id,
     name: authorizer.name,
-    arn: authorizer.providerARNs[0]
+    arn: authorizer.providerARNs
   };
 };
