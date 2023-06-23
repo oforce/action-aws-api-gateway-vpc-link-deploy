@@ -1,4 +1,4 @@
-.info.title |= "API" 
+.info.title |= "Openforce API" 
 | .info.description |= "Openforce REST API" 
 | .paths |= with_entries(
     .key as $path |
