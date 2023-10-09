@@ -1,9 +1,16 @@
-.info.title |= "API" 
+.info.title |= "Openforce API" 
 | .info.description |= "Openforce REST API" 
 | .paths |= with_entries(
     .key as $path |
     .value |= with_entries(
       (.key | ascii_upcase) as $method
+      | .value += {"security": [
+          {
+            "cognito_authorizer": [
+              "https://api.oforce.com/api"
+            ]
+          }
+        ]}
       | .value += {"x-amazon-apigateway-request-validator": "Validate query string parameters and headers"}
       | .value += 
         if $method != "options" then 
